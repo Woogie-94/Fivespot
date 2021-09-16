@@ -3,7 +3,7 @@ import axios from "axios";
 import { RootStateOrAny } from "react-redux";
 import { SignUpBody, SignUpReducerState } from "../types";
 
-export const axiosUserSignUp = createAsyncThunk("users/signup", async (body: SignUpBody) => {
+export const axiosSignUp = createAsyncThunk("users/signup", async (body: SignUpBody) => {
   const response = await axios.post("https://test.fivespot.space/api/users", body);
   return response.data;
 });
@@ -19,14 +19,14 @@ export const signUpReducer = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(axiosUserSignUp.pending, (state, action) => {
+      .addCase(axiosSignUp.pending, (state, action) => {
         state.state = "pending";
       })
-      .addCase(axiosUserSignUp.fulfilled, (state, action) => {
+      .addCase(axiosSignUp.fulfilled, (state, action) => {
         state.state = "success";
-        localStorage.setItem("token", action.payload.user.token);
+        localStorage.setItem("user", JSON.stringify(action.payload.user));
       })
-      .addCase(axiosUserSignUp.rejected, (state, action) => {
+      .addCase(axiosSignUp.rejected, (state, action) => {
         state.state = "failed";
         if (action.error.stack) state.error = action.error.stack;
       });

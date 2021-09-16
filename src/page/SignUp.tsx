@@ -1,7 +1,7 @@
 import React, { FormEvent, FormEventHandler, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { axiosUserSignUp, signUpSelector } from "../reducer/signUpReducer";
+import { axiosSignUp, signUpSelector } from "../reducer/signUpReducer";
 import * as H from "history";
 import { REQUEST_STATES, SignUpBody } from "../types";
 import useInput from "../hooks/useInput";
@@ -26,7 +26,7 @@ const SignUp = ({ history }: { history: H.History }): JSX.Element => {
         },
       };
 
-      dispatch(axiosUserSignUp(user));
+      dispatch(axiosSignUp(user));
     },
     [email, password, username, dispatch]
   );
