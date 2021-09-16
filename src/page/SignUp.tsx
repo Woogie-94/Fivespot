@@ -33,7 +33,10 @@ const SignUp = ({ history }: { history: H.History }): JSX.Element => {
 
   useEffect(() => {
     if (signUpState.state === "success") history.push("/");
-    if (signUpState.state === "failed") console.error(signUpState.error);
+    if (signUpState.state === "failed") {
+      alert("이미 존재하는 계정입니다.");
+      console.error(signUpState.error);
+    }
   }, [signUpState, history]);
 
   return (
