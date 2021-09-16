@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { axiosUserSignUp, signUpSelector } from "../reducer/signUpReducer";
 import * as H from "history";
-import { SignUpBody } from "../types";
+import { REQUEST_STATES, SignUpBody } from "../types";
 import useInput from "../hooks/useInput";
 
 const SignUp = ({ history }: { history: H.History }): JSX.Element => {
@@ -32,8 +32,8 @@ const SignUp = ({ history }: { history: H.History }): JSX.Element => {
   );
 
   useEffect(() => {
-    if (signUpState.state === "success") history.push("/");
-    if (signUpState.state === "failed") {
+    if (signUpState.state === REQUEST_STATES.SUCCESS) history.push("/");
+    if (signUpState.state === REQUEST_STATES.FAILED) {
       alert("이미 존재하는 계정입니다.");
       console.error(signUpState.error);
     }
