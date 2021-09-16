@@ -3,7 +3,7 @@ import React from "react";
 import Login from "./page/Login";
 import SignUp from "./page/SignUp";
 import Profile from "./page/Profile";
-import ArticleList from "./page/ArticleList";
+import ArticleList from "./page/Articles";
 import ArticleDetail from "./page/ArticleDetail";
 
 const App = (): JSX.Element => {
