@@ -1,7 +1,60 @@
-import React from "react";
+import React, { FormEvent, FormEventHandler, useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const SignUp = (): JSX.Element => {
-  return <></>;
+import { axiosUserSignUp, signUpSelector } from "../reducer/signUpReducer";
+import * as H from "history";
+import { SignUpBody } from "../types";
+import useInput from "../hooks/useInput";
+
+const SignUp = ({ history }: { history: H.History }): JSX.Element => {
+  const [email, onEmail] = useInput<string>("");
+  const [password, onPassword] = useInput<string>("");
+  const [username, onUsername] = useInput<string>("");
+
+  const dispatch = useDispatch();
+  const signUpState = useSelector(signUpSelector);
+
+  const onSignUp: FormEventHandler<HTMLFormElement> = useCallback(
+    async (e: FormEvent): Promise<void> => {
+      e.preventDefault();
+
+      const user: SignUpBody = {
+        user: {
+          email,
+          password,
+          username,
+        },
+      };
+
+      dispatch(axiosUserSignUp(user));
+    },
+    [email, password, username, dispatch]
+  );
+
+  useEffect(() => {
+    if (signUpState.state === "success") history.push("/");
+    if (signUpState.state === "failed") console.error(signUpState.error);
+  }, [signUpState, history]);
+
+  return (
+    <>
+      <form onSubmit={onSignUp}>
+        <div>
+          <span>이메일 : </span>
+          <input type="email" value={email} onChange={onEmail} />
+        </div>
+        <div>
+          <span>닉네임 : </span>
+          <input type="text" value={username} onChange={onUsername} />
+        </div>
+        <div>
+          <span>패스워드 : </span>
+          <input type="password" value={password} onChange={onPassword} />
+        </div>
+        <button type="submit">회원가입</button>
+      </form>
+    </>
+  );
 };
 
 export default SignUp;
