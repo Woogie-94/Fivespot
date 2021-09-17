@@ -18,7 +18,6 @@ const App = (): JSX.Element => {
     <>
       <BrowserRouter>
         <GlobalStyles />
-        <Header />
         <Switch>
           <Redirect exact path="/" to="/articles" />
           <Route path="/login" component={Login} />
