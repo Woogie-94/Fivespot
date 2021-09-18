@@ -5,7 +5,6 @@ import SignUp from "./page/SignUp";
 import Profile from "./page/Profile";
 import ArticleList from "./page/Articles";
 import ArticleDetail from "./page/ArticleDetail";
-import Header from "./components/Header";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
