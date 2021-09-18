@@ -11,22 +11,24 @@ const Header = (): JSX.Element => {
 
   return (
     <HeaderContainer>
-      <Link to="/">
-        <Logo src={logo} alt="Fivespot Logo" />
-      </Link>
-      <RightContainer>
-        {userInfo.state ? (
-          <Logging>
-            <Link to="/porfile">프로필</Link>
-            <button onClick={onLogOut}>로그아웃</button>
-            <Avatar alt={userInfo.username.toUpperCase()} style={{ width: `50px`, height: `50px` }}>
-              <Person style={{ width: `30px`, height: `30px` }} />
-            </Avatar>
-          </Logging>
-        ) : (
-          <LoginBtn to="/login">로그인/회원가입</LoginBtn>
-        )}
-      </RightContainer>
+      <Mid>
+        <Link to="/">
+          <Logo src={logo} alt="Fivespot Logo" />
+        </Link>
+        <RightContainer>
+          {userInfo.state ? (
+            <Logging>
+              <Link to="/porfile">프로필</Link>
+              <button onClick={onLogOut}>로그아웃</button>
+              <Avatar alt={userInfo.username.toUpperCase()} style={{ width: `50px`, height: `50px` }}>
+                <Person style={{ width: `30px`, height: `30px` }} />
+              </Avatar>
+            </Logging>
+          ) : (
+            <LoginBtn to="/login">로그인/회원가입</LoginBtn>
+          )}
+        </RightContainer>
+      </Mid>
     </HeaderContainer>
   );
 };
@@ -35,11 +37,18 @@ export default Header;
 
 const HeaderContainer = styled.div`
   display: flex;
+  justify-content: center;
+  height: 80px;
+  padding: 0 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+`;
+
+const Mid = styled.div`
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
-  padding: 0 400px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  width: 900px;
+  height: 100%;
 `;
 
 const Logo = styled.img`
