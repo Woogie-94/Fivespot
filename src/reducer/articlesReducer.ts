@@ -22,13 +22,11 @@ export const articlesReducer = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getArticles.pending, (state, action) => {
-        console.log(action, "p");
         state.state = "pending";
       })
       .addCase(getArticles.fulfilled, (state, action) => {
         state.state = "success";
         state.articles = action.payload.articles;
-        console.log(action, "f");
       })
       .addCase(getArticles.rejected, (state, action) => {
         state.state = "failed";
