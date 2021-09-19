@@ -1,9 +1,12 @@
-import React, { FormEvent, FormEventHandler, useCallback, useEffect } from "react";
+import React, { FormEvent, MouseEvent, MouseEventHandler, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useInput from "../hooks/useInput";
 import { axiosLogin, loginSelector } from "../reducer/loginReducer";
 import { REQUEST_STATES } from "../types";
 import * as H from "history";
+import { Button, TextField } from "@mui/material";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Login = ({ history }: { history: H.History }): JSX.Element => {
   const [email, onEmail] = useInput<string>("");
@@ -12,8 +15,8 @@ const Login = ({ history }: { history: H.History }): JSX.Element => {
   const dispatch = useDispatch();
   const loginState = useSelector(loginSelector);
 
-  const onLogin: FormEventHandler<HTMLFormElement> = useCallback(
-    async (e: FormEvent): Promise<void> => {
+  const onLogin: MouseEventHandler<HTMLElement> = useCallback(
+    async (e: MouseEvent): Promise<void> => {
       e.preventDefault();
 
       const user = {
@@ -37,18 +40,39 @@ const Login = ({ history }: { history: H.History }): JSX.Element => {
   }, [loginState, history]);
 
   return (
-    <>
-      <form onSubmit={onLogin}>
-        <div>
-          <input type="email" value={email} onChange={onEmail}></input>
-        </div>
-        <div>
-          <input type="password" value={password} onChange={onPassword}></input>
-        </div>
-        <button type="submit">로그인</button>
-      </form>
-    </>
+    <LoginContainer>
+      <Div>
+        <TextField label="ID" variant="standard" type="email" value={email} onChange={onEmail} />
+      </Div>
+      <Div>
+        <TextField label="PASSWORD" variant="standard" type="password" value={password} onChange={onPassword} />
+      </Div>
+      <Div>
+        <Button variant="contained" sx={{ width: `100%` }} onClick={onLogin}>
+          로그인
+        </Button>
+      </Div>
+      <Link to="/signup">
+        <Button variant="contained" sx={{ width: `100%` }}>
+          회원가입
+        </Button>
+      </Link>
+    </LoginContainer>
   );
 };
+
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const Div = styled.div`
+  width: 100%;
+  margin-bottom: 10px;
+`;
 
 export default Login;
