@@ -47,7 +47,7 @@ const Mid = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 900px;
+  width: 1100px;
   height: 100%;
 `;
 
