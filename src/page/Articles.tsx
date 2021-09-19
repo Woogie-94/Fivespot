@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ArticlesController from "../components/ArticlesController";
 import Grid from "../components/Grid";
@@ -22,6 +22,7 @@ const Articles = (): JSX.Element => {
 const ArticlesContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
   min-height: calc(100vh - 80px);
