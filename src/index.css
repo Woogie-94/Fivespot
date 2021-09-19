@@ -18,6 +18,10 @@
   src: url("./fonts/NanumSquareEB.otf") format("opentype");
 }
 
+* {
+  box-sizing: border-box;
+}
+
 button {
   cursor: pointer;
   background: none;
