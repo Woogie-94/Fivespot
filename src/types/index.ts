@@ -70,3 +70,11 @@ export interface UserInfo {
   username: string;
   token: string;
 }
+
+export interface CommentType {
+  createdAt: string;
+  updatedAt: string;
+  id: number;
+  body: string;
+  author: Author;
+}
