@@ -36,7 +36,7 @@ const ControllerContainer = styled.div`
   justify-content: flex-end;
   width: 1100px;
   height: 40px;
-  margin-top: 100px;
+  margin-top: 50px;
   padding: 0 10px;
 `;
 
