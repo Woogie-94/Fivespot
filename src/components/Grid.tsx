@@ -49,6 +49,7 @@ const Grid = (): JSX.Element => {
   }, [dispatch, articlesBody]);
 
   useEffect(() => {
+    console.log(articleData, "grid");
     if (articleData.state === REQUEST_STATES.SUCCESS) setArticles((articles) => [...articles, ...articleData.articles]);
     if (articleData.state === REQUEST_STATES.FAILED) console.error(articleData.error);
   }, [articleData]);
@@ -58,8 +59,6 @@ const Grid = (): JSX.Element => {
 
     return () => window.addEventListener("scroll", onScroll);
   }, [onScroll, throttle]);
-
-  useEffect(() => console.log(articles), [articles]);
 
   return (
     <GridContainer>

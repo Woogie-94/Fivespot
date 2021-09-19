@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import basicImg from "../images/basic_img_1.jpg";
 import { Article } from "../types";
 
 const GridCard = ({ article }: { article: Article }): JSX.Element => {
   return (
-    <CardContainer>
+    <CardContainer to={`/articles/${article.slug}`}>
       <CardImgContainer>
         <CardImg src={basicImg} alt="Card Img" />
       </CardImgContainer>
@@ -18,11 +19,12 @@ const GridCard = ({ article }: { article: Article }): JSX.Element => {
   );
 };
 
-const CardContainer = styled.div`
+const CardContainer = styled(Link)`
   cursor: pointer;
   transition: all 0.3s;
   width: calc((100% - 80px) / 4);
   margin: 0 10px 20px;
+  color: #000;
   background-color: #fff;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
 
