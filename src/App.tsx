@@ -3,7 +3,7 @@ import React from "react";
 import Login from "./page/Login";
 import SignUp from "./page/SignUp";
 import Profile from "./page/Profile";
-import ArticleList from "./page/Articles";
+import Articles from "./page/Articles";
 import ArticleDetail from "./page/ArticleDetail";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
@@ -22,7 +22,7 @@ const App = (): JSX.Element => {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
           <Route path="/profile" component={Profile} />
-          <Route exact path="/articles" component={ArticleList} />
+          <Route exact path="/articles" component={Articles} />
           <Route path="/articles/:slug" component={ArticleDetail} />
         </Switch>
       </BrowserRouter>
