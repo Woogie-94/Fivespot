@@ -36,6 +36,8 @@ const Header = (): JSX.Element => {
 export default Header;
 
 const HeaderContainer = styled.div`
+  position: relative;
+  z-index: 100;
   display: flex;
   justify-content: center;
   height: 80px;

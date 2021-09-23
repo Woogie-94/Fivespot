@@ -16,7 +16,11 @@ const initialState: SignUpReducerState = {
 export const signUpReducer = createSlice({
   name: "sign up",
   initialState,
-  reducers: {},
+  reducers: {
+    signupStateReset: (state) => {
+      state.state = "pending";
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(axiosSignUp.pending, (state, action) => {
@@ -33,4 +37,5 @@ export const signUpReducer = createSlice({
   },
 });
 
+export const { signupStateReset } = signUpReducer.actions;
 export const signUpSelector = (state: RootStateOrAny): SignUpReducerState => state.signUpReducer;

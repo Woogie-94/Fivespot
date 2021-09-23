@@ -33,7 +33,12 @@ const Comment = ({ slug }: { slug: string }): JSX.Element => {
 
   return (
     <>
-      <CommentInput placeholder="댓글을 작성하세요" value={body} onChange={onBody} />
+      <CommentInput
+        placeholder={userInfo.state ? "댓글을 작성하세요" : "로그인이 필요합니다."}
+        disabled={userInfo.state ? false : true}
+        value={body}
+        onChange={onBody}
+      />
       <CommentBtn>
         <Button size="small" variant="contained" color="primary" onClick={postComments}>
           댓글 작성

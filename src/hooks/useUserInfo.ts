@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../reducer/loginReducer";
+import { signupStateReset } from "../reducer/signUpReducer";
 import { UserInfo } from "../types";
 
 export const useUserInfo = (): [UserInfo, () => void] => {
@@ -18,6 +19,7 @@ export const useUserInfo = (): [UserInfo, () => void] => {
     localStorage.removeItem("user");
     setUserInfo({ ...userInfo, state: false });
     dispatch(logOut());
+    dispatch(signupStateReset());
   }, [userInfo, dispatch]);
 
   return [userInfo, onLogOut];

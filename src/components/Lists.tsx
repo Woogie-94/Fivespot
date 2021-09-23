@@ -31,7 +31,7 @@ const Lists = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(getArticles(articlesBody));
-  }, [dispatch, articlesBody]);
+  }, [articlesBody]);
 
   const onPageChange = useCallback(
     (event: ChangeEvent<unknown>, page: number) =>
